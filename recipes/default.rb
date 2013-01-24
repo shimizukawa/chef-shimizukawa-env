@@ -2,9 +2,11 @@ package "curl"
 package "screen"
 package "vim"
 
-cookbook_file "/home/vagrant/.screenrc" do
+owner = 'vagrant'
+
+cookbook_file "/home/#{owner}/.screenrc" do
   source 'screenrc.dot'
-  action :create_if_missing
+  action :create
   owner owner
   mode "0664"
 end
