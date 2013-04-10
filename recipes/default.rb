@@ -2,29 +2,33 @@ package "curl"
 package "screen"
 package "vim"
 
-owner = 'vagrant'
-group = 'vagrant'
-
-cookbook_file "/home/#{owner}/.screenrc" do
-  source 'screenrc.dot'
-  action :create
-  owner owner
-  group group
+file "/home/#{node.shimizukawa_env.user}/.gemrc" do
+  content "gem: --no-ri --no-rdoc"
+  owner node.shimizukawa_env.user
+  group node.shimizukawa_env.group
   mode "0664"
 end
 
-remote_directory "/home/#{owner}/.vim" do
+cookbook_file "/home/#{node.shimizukawa_env.user}/.screenrc" do
+  source 'screenrc.dot'
+  action :create
+  owner node.shimizukawa_env.user
+  group node.shimizukawa_env.group
+  mode "0664"
+end
+
+remote_directory "/home/#{node.shimizukawa_env.user}/.vim" do
   source '.vim'
-  owner owner
-  group group
+  owner node.shimizukawa_env.user
+  group node.shimizukawa_env.group
   mode "0755"
 end
 
-cookbook_file "/home/#{owner}/.vimrc" do
+cookbook_file "/home/#{node.shimizukawa_env.user}/.vimrc" do
   source '.vimrc'
   action :create
-  owner owner
-  group group
+  owner node.shimizukawa_env.user
+  group node.shimizukawa_env.group
   mode "0664"
 end
 
