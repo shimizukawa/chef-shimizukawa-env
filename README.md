@@ -6,17 +6,12 @@ This cookbook treat shimizukawa's development environment.
 Requirements
 ------------
 
-#### packages
-- `curl`
-- `screen`
-- `vim`
-- `mongodb-dev`
-- `mongodb-server`
 
 Attributes
 ----------
 
-nothing.
+- `default["shimizukawa_env"]["user"]` - default is "vagrant"
+- `default["shimizukawa_env"]["group"]` - default is "vagrant"
 
 Usage
 -----
